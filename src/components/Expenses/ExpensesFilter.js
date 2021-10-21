@@ -3,13 +3,10 @@ import './ExpensesFilter.css';
 
 const ExpensesFilter = (props) => {
 
+  // change handler
   const dropdownChangeHandler = (evt) => {
     props.onChangeFilter(evt.target.value)
   }
-
-
-
-
 
   return (
     <div className='expenses-filter'>

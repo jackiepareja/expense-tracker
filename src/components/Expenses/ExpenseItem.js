@@ -5,10 +5,9 @@ import './ExpenseItem.css';
 
 const ExpenseItem = (props) => {
 
+  // @accessor & @mutator
   const [title, setTitle] = useState(props.title);
-
-
-
+  // @clickHandler
   const clickHandler = () => {
     setTitle('Updated');
   }

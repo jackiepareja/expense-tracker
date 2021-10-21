@@ -3,11 +3,12 @@ import './ExpenseForm.css';
 
 const ExpenseForm = (props) => {
 
+  // @accessor and @mutator
   const [enteredTitle, setEnteredTitle] = useState('');
   const [enteredAmount, setEnteredAmount] = useState('');
   const [enteredDate, setEnteredDAte] = useState('');
 
-
+  // @setters
   const titleChangeHandler = (evt) => {
     setEnteredTitle(evt.target.value)
   }
@@ -21,6 +22,7 @@ const ExpenseForm = (props) => {
     setEnteredDAte(evt.target.value)
   }
 
+  // @submitHandler
   const submitHandler = (evt) => {
     evt.preventDefault();
 
@@ -35,7 +37,7 @@ const ExpenseForm = (props) => {
     props.onSaveExpenseData(expenseData);
     clearForm();
   };
-
+  // clear form function
   const clearForm = () => {
     setEnteredTitle('');
     setEnteredAmount('');
