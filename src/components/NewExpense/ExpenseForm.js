@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
 
   const [enteredTitle, setEnteredTitle] = useState('');
   const [enteredAmount, setEnteredAmount] = useState('');
@@ -30,7 +30,9 @@ const ExpenseForm = () => {
       date: new Date(enteredDate)
     }
 
-    console.log(expenseData);
+    // on submit, onSaveExpenseData executes that passes the function value saveExpenseDataHandler() from child to parent.
+    // The function argument that we are passing is the expenseData so that it can be accessed from the child to the parent.
+    props.onSaveExpenseData(expenseData);
     clearForm();
   };
 
