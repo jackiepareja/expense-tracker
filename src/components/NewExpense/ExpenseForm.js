@@ -26,9 +26,10 @@ const ExpenseForm = (props) => {
   const submitHandler = (evt) => {
     evt.preventDefault();
 
+    // grabbing the initial new and current state
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate)
     }
 
@@ -42,25 +43,6 @@ const ExpenseForm = (props) => {
     setEnteredTitle('');
     setEnteredAmount('');
     setEnteredDAte('');
-  }
-
-  // toggleForm = to show
-  const [toggleForm, setToggleForm] = useState(true);
-
-
-
-  const toggleFormHandler = () => {
-    toggleForm ? setToggleForm(false) : setToggleForm(true)
-  }
-
-
-  if (!toggleForm) {
-    return (
-      <div className="new-expense__actions">
-        <button onClick={toggleFormHandler}
-          type="submit">Add Expense</button>
-      </div>
-    )
   }
 
   return (
@@ -93,7 +75,7 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button onClick={toggleFormHandler} type="button">Cancel</button>
+        <button type="button" onClick={props.onCancel}  >Cancel</button>
         <button
           type="submit">Add Expense</button>
       </div>
