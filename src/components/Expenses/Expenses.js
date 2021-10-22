@@ -1,13 +1,15 @@
 import { useState } from 'react';
-import ExpenseItem from "./ExpenseItem";
 import ExpensesFilter from "./ExpensesFilter";
 import Card from "../core-ui/Card";
 import "./Expenses.css";
+import ExpensesList from './ExpensesList';
 
 const Expenses = (props) => {
 
   // @accessor and @mutator
-  const [filteredYear, setFilteredYear] = useState('2020')
+  const currYear = new Date().getFullYear().toString();
+  const [filteredYear, setFilteredYear] = useState(currYear);
+
   // @mutator function
   const filteredChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
@@ -18,20 +20,13 @@ const Expenses = (props) => {
     return expense.date.getFullYear().toString() === filteredYear;
   })
 
+
+
   return (
 
     <Card className="expenses">
       <ExpensesFilter onChangeFilter={filteredChangeHandler} selectedYear={filteredYear} />
-      {
-        filteredExpenses.map(item => (
-          <ExpenseItem
-            key={item.id}
-            title={item.title}
-            amount={item.amount}
-            date={item.date}
-          />
-        ))
-      }
+      <ExpensesList items={filteredExpenses} />
     </Card>
   )
 }
